@@ -41,11 +41,12 @@ AES256をサポートしていない環境での実効例
 
 Oracle JDK・JREでは「一部の国」の暗号輸出に関する規制から、
 デフォルトのJDK・JREの暗号強度が下げられている。
-典型的には、標準インストール直後ではAES256がデフォルトで使用出来ない。
+典型的には、標準インストール直後ではAES256が使用出来ない。
 
 この規制による暗号強度を無制限のものに直すため、
 別途"Unlimited Strength Java(TM) Cryptography Extension Policy Files"
 というものをOracleが提供している。
+
 よって、暗号規制上問題がないのであればこのポリシーファイルと呼ばれるものを
 所定の手続きでインストールしておくとAES256を使えるようになる。
 
@@ -62,8 +63,12 @@ JDK 8に対応するパッケージは例えば以下にある (2016-03-17現在
 
  * http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html
 
-これはJavaを用いたセキュリティ製品でたまに重要な成約になる。
-例えばSAMLのIdP実装の一つであるShibboleth IdPもその一つ
+標準ではAES256が使えないという事実は、
+Javaを用いたセキュリティ製品で重要な成約になることもあるため、
+事前にインストールしておくことが望ましいかもしれない。
+
+一例として、SAMLのIdP実装の一つであるShibboleth IdPではOracle JDKを採用する場合には
+このポリシーファイルの更新も行うように事前に指示がある。
 
  * https://wiki.shibboleth.net/confluence/display/IDP30/Installation
  * https://wiki.shibboleth.net/confluence/display/IDP30/SystemRequirements
@@ -75,6 +80,10 @@ JDK 8に対応するパッケージは例えば以下にある (2016-03-17現在
 > If you don't do this, your deployment will be unable to make use of cryptographic algorithms
 > such as AES with 256-bit keys which may be required for interoperability with some SPs.
 
+このプロジェクトの CheckAesEncryption.java は上記の暗号化周りの事情を踏まえた上で、
+AES256 readyなJavaであるかどうかを軽く確認したい時に使う目的で作成された。
+
+
 # 参考
 
 本ツールはGoogle検索の結果出てきた以下のページの説明を元に作成された
@@ -82,7 +91,7 @@ JDK 8に対応するパッケージは例えば以下にある (2016-03-17現在
  * http://pieceofnostalgy.blogspot.jp/2012/01/java-256bitaes.html
  * http://techbooster.jpn.org/andriod/application/6629/
 
-なんだよてくぶかよ。
+てくぶじゃないか。
 
 # ライセンス
 
