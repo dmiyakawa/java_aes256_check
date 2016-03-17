@@ -68,3 +68,23 @@ JDK 8に対応するパッケージは例えば以下にある (2016-03-17現在
  * https://wiki.shibboleth.net/confluence/display/IDP30/Installation
  * https://wiki.shibboleth.net/confluence/display/IDP30/SystemRequirements
 
+> If using the recommended Oracle JDK,
+> make sure you've installed the Java Cryptography Extension (JCE)
+> Unlimited Strength Jurisdiction Policy Files
+> (see http://www.oracle.com/technetwork/java/javase/downloads/index.html, towards the bottom).
+> If you don't do this, your deployment will be unable to make use of cryptographic algorithms
+> such as AES with 256-bit keys which may be required for interoperability with some SPs.
+
+# 参考
+
+本ツールはGoogle検索の結果出てきた以下のページの説明を元に作成された
+
+ * http://pieceofnostalgy.blogspot.jp/2012/01/java-256bitaes.html
+ * http://techbooster.jpn.org/andriod/application/6629/
+
+なんだよてくぶかよ。
+
+# ライセンス
+
+参照したソフトウェアコードについては不明。
+本ツールは MIT ライセンスということにしておく。
